@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mockserver
+  template:
+    metadata:
+      labels:
+        app: mockserver
+    spec:
+      containers:
+        - name: spring-boot-container
+          image: 192.168.0.102:8083/ad0a03
+          ports:
+            - containerPort: 2001
+      imagePullSecrets:
+        - name: nexus-pull-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mockserver
+spec:
+  selector:
+    app: mockserver
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 2001
+  type: LoadBalancer
