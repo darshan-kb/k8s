@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-boot-container
-          image: 192.168.0.102:8083/ad0a03
+          image: 192.168.0.102:8083/1d98b3
           ports:
             - containerPort: 2001
       imagePullSecrets:
