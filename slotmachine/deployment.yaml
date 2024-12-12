@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slotmachine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slotmachine
+  template:
+    metadata:
+      labels:
+        app: slotmachine
+    spec:
+      containers:
+        - name: spring-boot-container
+          image: 192.168.0.102:8083/2a0013
+          ports:
+            - containerPort: 2001
+      imagePullSecrets:
+        - name: nexus-pull-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: slotmachine
+spec:
+  selector:
+    app: slotmachine
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 2001
+  type: LoadBalancer
