@@ -16,7 +16,7 @@ spec:
         - name: spring-boot-container
           image: 192.168.0.102:8083/1e346b
           ports:
-            - containerPort: 2001
+            - containerPort: 8081
       imagePullSecrets:
         - name: nexus-pull-secret
 ---
@@ -30,5 +30,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 2001
+      targetPort: 8081
   type: LoadBalancer
