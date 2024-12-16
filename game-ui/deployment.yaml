@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ui-container
-          image: 192.168.0.102:8083/050a66
+          image: 192.168.0.102:8083/9ce407
           ports:
             - containerPort: 3006
       imagePullSecrets:
